@@ -247,6 +247,7 @@ function main()
   sampRegisterChatCommand("lnumb", cmd_lnumb)
   sampRegisterChatCommand("snumb", cmd_snumb)
   sampRegisterChatCommand("smsdelay", cmd_smsdelay)
+	sampRegisterChatCommand("update", checkForUpdate)
 	while not isSampAvailable() do wait(100) end
 end
 
