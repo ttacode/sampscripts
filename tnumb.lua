@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.4"
+SCRIPT_VERSION =  "1.5"
 
 local sampev = require("lib.samp.events")
 
@@ -139,80 +139,6 @@ local dopValue = {
 3636
 }
 
-local numberValue = {
-119,
-121,
-127,
-314,
-343,
-440,
-474,
-557,
-603,
-690,
-716,
-773,
-898,
-902,
-904,
-953,
-987,
-993,
-1101,
-1337,
-2727,
-3033,
-3999,
-4060,
-4090,
-4434,
-5792,
-6663,
-7010,
-9200,
-9871,
-9876,
-100050,
-111911,
-112244,
-123888,
-152200,
-180180,
-200107,
-200197,
-201369,
-210012,
-215216,
-300333,
-313133,
-321321,
-333002,
-420420,
-445445,
-464444,
-484444,
-500050,
-500355,
-545545,
-555502,
-555565,
-609060,
-654321,
-662664,
-666156,
-666187,
-666666,
-717777,
-737777,
-855558,
-866666,
-888188,
-966969,
-990199,
-992999,
-999999
-}
-
 
 local function checkForUpdate()
     local ok, res = pcall(function()
@@ -230,7 +156,7 @@ local function checkForUpdate()
     end
 
     sampAddChatMessage(
-        string.format("[TNUMB] Найдена новая версия: %s (у тебя %s)",
+        string.format("[TNUMB] Найдена новая версия: %s (твоя %s)",
         remoteVersion, SCRIPT_VERSION),
         -1
     )
@@ -333,20 +259,6 @@ znach = 0
 end)
 end
 
-function lnumb()
-lua_thread.create(function()
-znach = 0
-	for i = 0, 1000 do
-		znach = znach + 1
-		if not numberValue[znach] or ln == 0 then
-			break
-		end
-	sampSendChat('/sms ' .. numberValue[znach] .. ' tasks')
-		wait(sdelay)
-	end
-end)
-end
-
 function snumb()
 lua_thread.create(function()
 znach = 0
@@ -368,17 +280,6 @@ function cmd_tnumb(arg)
 	else
 		bn = 0
 		printStringNow('TASK NUMBERFIND OFF', 1000)
-	end
-end
-
-function cmd_lnumb(arg)
-	if ln == 0 then
-		ln = 1
-		lnumb()
-		printStringNow('TASK NUMBERLIST ON', 1000)
-	else
-		ln = 0
-		printStringNow('TASK NUMBERLIST OFF', 1000)
 	end
 end
 
