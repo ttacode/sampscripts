@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.1"
+SCRIPT_VERSION =  "1.2"
 
 local sampev = require("lib.samp.events")
 
@@ -216,31 +216,32 @@ local function checkForUpdate()
 
     local remoteVersion = res.text:gsub("%s+", "")
     if remoteVersion == SCRIPT_VERSION then
+		sampAddChatMessage("[TNUMB] Обновлений нет", -1)
         return
     end
 
     sampAddChatMessage(
-        string.format("[Updater] Найдена новая версия: %s (у тебя %s)",
+        string.format("[TNUMB] Найдена новая версия: %s (у тебя %s)",
         remoteVersion, SCRIPT_VERSION),
         -1
     )
 
     local file = requests.get(UPDATE_URL)
     if not file or file.status_code ~= 200 then
-        sampAddChatMessage("[Updater] Ошибка загрузки файла", -1)
+        sampAddChatMessage("[TNUMB] Ошибка загрузки файла", -1)
         return
     end
 
     local f = io.open(thisScript().path, "w")
     if not f then
-        sampAddChatMessage("[Updater] Не удалось перезаписать файл", -1)
+        sampAddChatMessage("[TNUMB] Не удалось перезаписать файл", -1)
         return
     end
 
     f:write(u8:decode(file.text))
     f:close()
 
-    sampAddChatMessage("[Updater] Скрипт обновлён, перезагрузка...", -1)
+    sampAddChatMessage("[TNUMB] Скрипт обновлён, перезагрузка...", -1)
     thisScript():reload()
 end
 
