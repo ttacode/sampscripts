@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.5"
+SCRIPT_VERSION =  "1.1"
 
 local sampev = require("lib.samp.events")
 
@@ -183,7 +183,6 @@ end
 function main()
   repeat wait(0) until isSampAvailable()
   sampRegisterChatCommand("tnumb", cmd_tnumb)
-  sampRegisterChatCommand("lnumb", cmd_lnumb)
   sampRegisterChatCommand("snumb", cmd_snumb)
   sampRegisterChatCommand("smsdelay", cmd_smsdelay)
 	sampRegisterChatCommand("update", checkForUpdate)
