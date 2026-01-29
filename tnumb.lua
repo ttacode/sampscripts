@@ -8,7 +8,15 @@ require "moonloader"
 local encoding = require "encoding"
 encoding.default = "CP1251"
 u8 = encoding.UTF8
-title = u8:decode(title)
+local function safeDecode(str)
+    if str and type(str) == "string" then
+        return u8:decode(str)
+    else
+        return ""
+    end
+end
+
+title = safeDecode(title)
 
 local bn = 0
 local ln = 0
