@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.1"
+SCRIPT_VERSION =  "1.3"
 
 local sampev = require("lib.samp.events")
 
@@ -151,12 +151,12 @@ local function checkForUpdate()
 
     local remoteVersion = res.text:gsub("%s+", "")
     if remoteVersion == SCRIPT_VERSION then
-		sampAddChatMessage("[TNUMB] Обновлений нет", -1)
+		sampAddChatMessage("[TNUMB] Обновление не найдено", -1)
         return
     end
 
     sampAddChatMessage(
-        string.format("[TNUMB] Найдена новая версия: %s (сейчас %s)",
+        string.format("[TNUMB] Найдена новая версия: %s (твоя %s)",
         remoteVersion, SCRIPT_VERSION),
         -1
     )
