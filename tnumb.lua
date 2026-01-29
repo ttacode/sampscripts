@@ -14,6 +14,9 @@ local ln = 0
 local sn = 0
 local sdelay = 990
 
+local UPDATE_URL = "https://raw.githubusercontent.com/ttacode/sampscripts/refs/heads/main/tnumb.lua"
+local VERSION_URL = "https://raw.githubusercontent.com/ttacode/sampscripts/refs/heads/main/version.txt"
+
 local findValue = {}
 
 local dopValue = {
