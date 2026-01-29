@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.2"
+SCRIPT_VERSION =  "1.3"
 
 local sampev = require("lib.samp.events")
 
@@ -8,6 +8,11 @@ require "moonloader"
 local encoding = require "encoding"
 encoding.default = "CP1251"
 u8 = encoding.UTF8
+title = u8:decode(title)
+
+local function msg(text)
+    sampAddChatMessage(u8(text), -1)
+end
 
 local bn = 0
 local ln = 0
