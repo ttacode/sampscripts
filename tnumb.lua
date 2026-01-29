@@ -2,6 +2,13 @@ SCRIPT_VERSION =  "1.1"
 
 local sampev = require("lib.samp.events")
 
+local requests = require("requests")
+
+require "moonloader"
+local encoding = require "encoding"
+encoding.default = "CP1251"
+u8 = encoding.UTF8
+
 local bn = 0
 local ln = 0
 local sn = 0
@@ -194,6 +201,45 @@ local numberValue = {
 999999
 }
 
+
+local function checkForUpdate()
+    local ok, res = pcall(function()
+        return requests.get(VERSION_URL)
+    end)
+
+    if not ok or not res or res.status_code ~= 200 then
+        return
+    end
+
+    local remoteVersion = res.text:gsub("%s+", "")
+    if remoteVersion == SCRIPT_VERSION then
+        return
+    end
+
+    sampAddChatMessage(
+        string.format("[Updater] Найдена новая версия: %s (у тебя %s)",
+        remoteVersion, SCRIPT_VERSION),
+        -1
+    )
+
+    local file = requests.get(UPDATE_URL)
+    if not file or file.status_code ~= 200 then
+        sampAddChatMessage("[Updater] Ошибка загрузки файла", -1)
+        return
+    end
+
+    local f = io.open(thisScript().path, "w")
+    if not f then
+        sampAddChatMessage("[Updater] Не удалось перезаписать файл", -1)
+        return
+    end
+
+    f:write(u8:decode(file.text))
+    f:close()
+
+    sampAddChatMessage("[Updater] Скрипт обновлён, перезагрузка...", -1)
+    thisScript():reload()
+end
 
 function main()
   repeat wait(0) until isSampAvailable()
