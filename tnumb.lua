@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.9"
+SCRIPT_VERSION =  "2.0"
 
 local sampev = require("lib.samp.events")
 
@@ -407,7 +407,7 @@ znach = 0
 		if not dopValue[znach] or sn == 0 then
 			break
 		end
-	sampSendChat('/sms ' .. dopValue[znach] .. ' Извиняюсь за беспокойство, tasks')
+	sampSendChat('/sms ' .. dopValue[znach] .. ' Внимание! Спасибо за внимание.')
 		wait(sdelay)
 	end
 end)
