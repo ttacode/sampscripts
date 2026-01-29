@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.5"
+SCRIPT_VERSION =  "1.3"
 
 local sampev = require("lib.samp.events")
 
