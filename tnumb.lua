@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "1.2"
+SCRIPT_VERSION =  "1.1"
 
 local sampev = require("lib.samp.events")
 
@@ -156,7 +156,7 @@ local function checkForUpdate()
     end
 
     sampAddChatMessage(
-        string.format("[TNUMB] Найдена новая версия: %s (твоя %s)",
+        string.format("[TNUMB] Найдена новая версия: %s (сейчас %s)",
         remoteVersion, SCRIPT_VERSION),
         -1
     )
