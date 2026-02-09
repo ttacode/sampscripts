@@ -1,4 +1,4 @@
-SCRIPT_VERSION =  "3.1"
+SCRIPT_VERSION =  "3.2"
 
 local sampev = require("lib.samp.events")
 
@@ -327,7 +327,7 @@ znach = 0
 		if not dopValue[znach] or sn == 0 then
 			break
 		end
-	sampSendChat('/sms ' .. dopValue[znach] .. ' tasks')
+	sampSendChat('/sms ' .. dopValue[znach] .. ' task')
 		wait(sdelay)
 	end
 end)
